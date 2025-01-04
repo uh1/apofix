@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark" />
+        <link rel="stylesheet" href="css/pico.min.css">
+        <title>apofix - Fix encoding</title>
+    </head>
+    <body>
+        <main class="container">
+            <h1>تصحيح الترميز</h1>
+            <div class="grid">
+                <div>
+                    <p>العربية</p>
+                    <textarea id="ar"></textarea>
+                </div>
+                <div>
+                    <p>قاعدة البيانات</p>
+                    <textarea id="db" dir="ltr"></textarea>
+                </div>
+            </grid>
+        </main>
+        <script src="src/js/apofix.js"></script>
+        <script>
+            const ar_text = document.getElementById('ar');
+            const db_text = document.getElementById('db');
+            ar_text.addEventListener('input', () => {
+                db_text.value = unfixEncoding(ar_text.value);
+            });
+            db_text.addEventListener('input', () => {
+                ar_text.value = fixEncoding(db_text.value);
+            });
+        </script>
+    </body>
+</html>
